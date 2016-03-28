@@ -1,13 +1,7 @@
 About this example
 ------------------
-This example Dockerfile will build a docker container with nginx installed and running.
-Additionally, we're shipping a customer sites-available/default configuration file. Once
-up and running, you will have a custom "Docker Basics Example" page with a custom
-header: `X-Docker-Basics: DOCKER`
-
-Finally, we're including a custom "document" root directory which contains our web
-application. When we run the container, we will mount this volume within the container.
-
+The purpose of this repository is to provide an all-in-one development envrionment for laravel using docker. This repository, 
+is not super generalized or setup for production. It's suppose to be an alternative to homestead. We're including a custom "document" root directory which contains our web application. When we run the container, we will mount this volume within the container.
 
 Building the container
 ----------------------
@@ -18,6 +12,7 @@ The following Docker build command creates the container image. Basically it mak
 
 Running the container
 ---------------------
+*Download a copy of laravel and place it in the app folder*
 The following Docker run command will get the container running with a published port and mounted
 volumes in place:
 ```
