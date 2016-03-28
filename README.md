@@ -21,14 +21,14 @@ Running the container
 The following Docker run command will get the container running with a published port and mounted
 volumes in place:
 ```
- $ docker run --name instasearch -p 8080:80 -p 3306:3306 -e USER_NAME=`whoami` -v `pwd`/app:/usr/local/app:rw -v `pwd`/logs:/var/log/nginx:rw -d laravel-instagram:nginx-mysql
+ $ docker run --name laravel-app -p 8080:80 -p 3306:3306 -e USER_NAME=`whoami` -v `pwd`/app:/usr/local/app:rw -v `pwd`/logs:/var/log/nginx:rw -d laravel-instagram:nginx-mysql
 ```
 
 Log into the terminal
 ----------------
 
 ```
-$ docker exec -it instasearch bash
+$ docker exec -it laravel-app bash
 ```
 
 
@@ -41,28 +41,28 @@ To start the container
 ----------------
 
 ```
-$ sudo docker start instasearch
+$ sudo docker start laravel-app
 ```
 
 To stop the container
 ----------------
 
 ```
-$ sudo docker stop instasearch
+$ sudo docker stop laravel-app
 ```
 
 To restart the container
 ----------------
 
 ```
-$ sudo docker restart instasearch
+$ sudo docker restart laravel-app
 ```
 
 To delete the container
 ----------------
 Deleting the container will delete any data inside the container. ie. the data in your db will not be preserved
 ```
-$ sudo docker rm instasearch
+$ sudo docker rm laravel-app
 ```
 
 To delete the image
@@ -78,5 +78,23 @@ Access mysql from the host machine
 Even though the port has been exposed on the box. The permissions have not been granted to access mysql from anywhere. 
 To active that run this command. A line has been added to the .bashrc to grant privs. Check for it in start.sh
 ```
-$ sudo docker exec -it instasearch bash
+$ sudo docker exec -it laravel-app bash
 ```
+
+Run Gulp
+---------------
+Log in to the container
+
+`$ docker exec -it laravel-app bash`
+
+Switch the user to user on your host machine. It was created when the container was created
+
+`$ sudo su <username>`
+
+Navigate to the app directory in the container
+
+`$ cd /usr/local/app`
+
+Run Gulp
+
+`$ gulp watch`
