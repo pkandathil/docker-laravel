@@ -13,10 +13,10 @@ ENV MYSQL_VERSION 5.5.47-0ubuntu0.14.04.1
 RUN apt-get -qq update && \
     apt-get -yf install software-properties-common
 
-# install nginx mysql and composer
+# install nginx mysql and composer and nodejs and npm
 RUN add-apt-repository --yes ppa:nginx/${NGINX_REPO} && \
     apt-get -qq update && \
-    apt-get -yf install nginx=${NGINX_VERSION} php5-fpm php5-cli php5-json libapache2-mod-php5 php5-mysql php5-curl supervisor mysql-server=${MYSQL_VERSION} mysql-client curl && \
+    apt-get -yf install nginx=${NGINX_VERSION} php5-fpm php5-cli php5-json libapache2-mod-php5 php5-mysql php5-curl supervisor mysql-server=${MYSQL_VERSION} mysql-client curl nodejs npm && \
     curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
 # copy nginx default sites available file
