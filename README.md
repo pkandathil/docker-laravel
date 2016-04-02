@@ -19,7 +19,6 @@ $ git checkout php-7.0
 
 
 ```
- $ git checkout php-5.6
  $ docker build -t laravel:nginx-mysql .
 ```
 
