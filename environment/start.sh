@@ -14,6 +14,8 @@ npm install npm -g # Update npm to the latest version
 npm install --global gulp
 npm install
 
+mkdir /var/run/php
 
 # Start supervisord and services
 /usr/bin/supervisord -n -c /etc/supervisord.conf
+
