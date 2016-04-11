@@ -16,7 +16,7 @@ RUN apt-get -qq update && \
 # install nginx mysql and composer and nodejs and npm
 RUN add-apt-repository --yes ppa:nginx/${NGINX_REPO} && \
     apt-get -qq update && \
-    apt-get -yf install nginx=${NGINX_VERSION} php5-fpm php5-cli php5-json libapache2-mod-php5 php5-mysql php5-curl supervisor mysql-server=${MYSQL_VERSION} mysql-client curl nodejs npm && \
+    apt-get -yf install nginx=${NGINX_VERSION} php5-fpm php5-cli php5-json libapache2-mod-php5 php5-mysql php5-curl mysql-server=${MYSQL_VERSION} mysql-client curl nodejs npm && \
     curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
 # copy nginx default sites available file
@@ -24,7 +24,6 @@ ADD environment/default /etc/nginx/sites-available/default
 ADD environment/my.cnf /etc/mysql/
 ADD environment/start.sh /
 ADD environment/mysql_permissions.sql /
-ADD environment/supervisord.conf /etc/supervisord.conf
 
 #create a new user based on the user of your host OS. You pass this in as an ENV variable.
 RUN chmod 775 /mysql_permissions.sql

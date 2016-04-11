@@ -6,8 +6,14 @@ is not super generalized or setup for production. It's suppose to be an alternat
 Building the container
 ----------------------
 The following Docker build command creates the container image. Basically it makes sure your docker file is not doing anything crazy. It download Ubuntu and some of the other packages you will be installing. It does not fun the container.
+
+If you want php 5.6
 ```
- $ docker build -t laravel:nginx-mysql .
+$ git checkout nginx-mysql-php-5.6
+```
+
+```
+ $ docker build -t laravel:nginx-mysql-php-5.6 .
 ```
 
 Running the container
@@ -16,7 +22,7 @@ Running the container
 The following Docker run command will get the container running with a published port and mounted
 volumes in place:
 ```
- $ docker run --name laravel-app -p 8080:80 -p 3306:3306 -e USER_NAME=`whoami` -v `pwd`/app:/usr/local/app:rw -v `pwd`/logs:/var/log/nginx:rw -d laravel:nginx-mysql
+ $ docker run --name laravel-app -p 8080:80 -p 3306:3306 -e USER_NAME=`whoami` -v `pwd`/app:/usr/local/app:rw -v `pwd`/logs:/var/log/nginx:rw -d laravel:nginx-mysql-php-5.6
 ```
 
 Log into the terminal

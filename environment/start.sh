@@ -14,6 +14,6 @@ npm install npm -g # Update npm to the latest version
 npm install --global gulp
 npm install
 
-
-# Start supervisord and services
-/usr/bin/supervisord -n -c /etc/supervisord.conf
+service mysqld restart
+service php5-fpm restart;
+nginx -g "daemon off;"
