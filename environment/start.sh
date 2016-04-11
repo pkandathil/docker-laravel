@@ -17,5 +17,8 @@ npm install
 mkdir /var/run/php
 
 # Start supervisord and services
-/usr/bin/supervisord -n -c /etc/supervisord.conf
+#/usr/bin/supervisord -n -c /etc/supervisord.conf
+service mysqld restart
+service php7.0-fpm restart;
+nginx -g "daemon off;"
 

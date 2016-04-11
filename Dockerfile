@@ -17,7 +17,7 @@ RUN apt-get -qq update && \
 RUN add-apt-repository --yes ppa:nginx/${NGINX_REPO} && \
     add-apt-repository ppa:ondrej/php && \
     apt-get -qq update && \
-    apt-get -yf --force-yes install nginx=${NGINX_VERSION} php7.0 php7.0-fpm php7.0-cli php7.0-json libapache2-mod-php7.0 php7.0-mysql php7.0-curl supervisor mysql-server=${MYSQL_VERSION} mysql-client curl nodejs npm && \
+    apt-get -yf --force-yes install nginx=${NGINX_VERSION} php7.0 php7.0-fpm php7.0-cli php7.0-json libapache2-mod-php7.0 php7.0-mysql php7.0-curl mysql-server=${MYSQL_VERSION} mysql-client curl nodejs npm && \
     curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
 # copy nginx default sites available file
@@ -25,7 +25,6 @@ ADD environment/default /etc/nginx/sites-available/default
 ADD environment/my.cnf /etc/mysql/
 ADD environment/start.sh /
 ADD environment/mysql_permissions.sql /
-ADD environment/supervisord.conf /etc/supervisord.conf
 
 #create a new user based on the user of your host OS. You pass this in as an ENV variable.
 RUN chmod 775 /mysql_permissions.sql
@@ -37,3 +36,4 @@ EXPOSE 80
 EXPOSE 3306
 
 CMD ["/start.sh"]
+
