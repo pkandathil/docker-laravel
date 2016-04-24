@@ -16,9 +16,12 @@ npm install
 
 mkdir /var/run/php
 
+sudo chown -R ${USER_NAME}:www-data /usr/local/app/node_modules
+cd /usr/local/app && composer install
+
 # Start supervisord and services
 #/usr/bin/supervisord -n -c /etc/supervisord.conf
-service mysqld restart
+service mysqld restart;
 service php7.0-fpm restart;
 nginx -g "daemon off;"
 

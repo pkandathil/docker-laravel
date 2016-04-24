@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # mainline or stable
 ENV NGINX_REPO      stable
 ENV NGINX_VERSION   1.8.1-1+trusty0
-ENV MYSQL_VERSION 5.5.47-0ubuntu0.14.04.1
+ENV MYSQL_VERSION 5.5
 
 # get add-apt-respository for repo bits
 RUN apt-get -qq update && \
@@ -17,7 +17,7 @@ RUN apt-get -qq update && \
 RUN add-apt-repository --yes ppa:nginx/${NGINX_REPO} && \
     add-apt-repository ppa:ondrej/php && \
     apt-get -qq update && \
-    apt-get -yf --force-yes install nginx=${NGINX_VERSION} php7.0 php7.0-fpm php7.0-cli php7.0-json libapache2-mod-php7.0 php7.0-mysql php7.0-curl mysql-server=${MYSQL_VERSION} mysql-client curl nodejs npm && \
+    apt-get -yf --force-yes install nginx=${NGINX_VERSION} php7.0 php7.0-fpm php7.0-cli php7.0-json libapache2-mod-php7.0 php7.0-mbstring php7.0-xml php7.0-mysql php7.0-curl mysql-server-${MYSQL_VERSION} mysql-client-core-${MYSQL_VERSION} curl nodejs npm git && \
     curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
 # copy nginx default sites available file

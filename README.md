@@ -22,7 +22,7 @@ Running the container
 The following Docker run command will get the container running with a published port and mounted
 volumes in place:
 ```
- $ docker run --name laravel-app -p 8080:80 -p 3306:3306 -e USER_NAME=`whoami` -v `pwd`/app:/usr/local/app:rw -v `pwd`/logs:/var/log/nginx:rw -d laravel:nginx-mysql-php-7.0
+ $ docker run --name laravel-app -p 8080:80 -p 3306:3306 -e USER_NAME=`whoami` -v `pwd`:/usr/local/app:rw -v `pwd`/logs:/var/log/nginx:rw -d laravel:nginx-mysql-php-7.0
 ```
 
 Log into the terminal
