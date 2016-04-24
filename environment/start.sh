@@ -16,8 +16,9 @@ npm install
 
 mkdir /var/run/php
 
-sudo chown -R ${USER_NAME}:www-data /usr/local/app/node_modules
 cd /usr/local/app && composer install
+
+sudo chown -R ${USER_NAME}:www-data /usr/local/app/
 
 # Start supervisord and services
 #/usr/bin/supervisord -n -c /etc/supervisord.conf
