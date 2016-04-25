@@ -77,10 +77,26 @@ $ sudo docker rmi laravel:nginx-mysql
 Access mysql from the host machine
 ----------------
 Even though the port has been exposed on the box. The permissions have not been granted to access mysql from anywhere. 
-To active that run this command. A line has been added to the .bashrc to grant privs. Check for it in start.sh
+To activate that run this command. A line has been added to the .bashrc to grant privs. Check for it in start.sh
 ```
 $ sudo docker exec -it laravel-app bash
 ```
+Inside container:
+```
+/# sudo service mysql restart
+/# mysql < /mysql_permissions.sql 
+```
+
+To connect to mysql from your host machine, run the following command on your host machine:
+```
+$ docker inspect laravel-app | grep IPAddress
+```
+
+Take the IP address that appears and use it in this command on your host machine:
+```
+mysql -h <ip address> -P 3306 -u root
+```
+
 
 Run Gulp
 ---------------
