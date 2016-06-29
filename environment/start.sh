@@ -12,6 +12,7 @@ ln -s /usr/bin/nodejs /usr/bin/node
 cd /usr/local/app
 npm install npm -g # Update npm to the latest version
 npm install --global gulp
+npm install --global bower
 npm install
 
 mkdir /var/run/php
